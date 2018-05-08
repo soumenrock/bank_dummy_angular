@@ -1,0 +1,126 @@
+@import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
+@import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
+
+
+.topnav {
+    overflow: hidden;
+    background-color: rgba(240, 113, 28, 0.884);
+    color: ghostwhite;
+    height: 45px;
+  }
+  
+  .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+   
+    text-decoration: none;
+    font-size: 17px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+  
+  }
+
+  .topnav .search-container {
+    float: right;
+  }
+  
+  .topnav input[type=text] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+  }
+  
+  .topnav .search-container button {
+    float: right;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .topnav .search-container button:hover {
+    background: #ccc;
+  }
+  
+  .topnav a:hover {
+    background-color: rgb(240, 150, 77);
+    color: black;
+  }
+  
+  .topnav a.active {
+    background-color: rgb(240, 150, 77);
+    color: white;
+  }
+
+  .midnav {
+    overflow: hidden;
+    height: 80px;
+    
+  }
+
+  .midnav a {
+    
+    color: #572e9b;
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+    font-size: 15px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+  }
+
+  .droplink {
+    
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+}
+
+
+.midnav:hover .dropdown-content {
+  display: block;
+}
+
+.container {
+  position: relative;
+  width: 250px;
+}
+
+.image {
+opacity: 1;
+display: block;
+width: 100%;
+height: auto;
+transition: .5s ease;
+backface-visibility: hidden;
+}
+
+.middle {
+transition: .5s ease;
+opacity: 0;
+position: relative;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+-ms-transform: translate(-50%, -50%);
+
+}
+
+.container:hover .image {
+opacity: 0.3;
+}
+
+.container:hover .middle {
+opacity: 1;
+}
+
+.text {
+background-color: rgba(53, 55, 58, 0.486);
+color: white;
+font-size: 16px;
+;
+}
+

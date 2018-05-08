@@ -1,0 +1,13 @@
+<form #loginForm='ngForm' (submit)="loginUser($event)">
+  <div class="input">
+    <label>username</label>
+    <input type="email" [(ngModel)]='user.email' name="email">
+  </div>
+  <div class="input">
+    <label>Password</label>
+    <input type="password" [(ngModel)]='user.password' name="password">
+  </div>
+  <div class="login">
+    <input type="submit" value="Login" > 
+  </div>
+</form>
