@@ -1,13 +1,15 @@
 package com.example.demo.controller;
 
+import com.example.demo.repo.AccountRepo;
 import com.example.demo.repo.CustomRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
+import com.example.demo.entity.Accounts;
 import com.example.demo.entity.RoleEntity;
 import com.example.demo.entity.UserEntity;
-import com.example.demo.repo.UserRepository;
+import com.example.demo.entity.UserRepository;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
@@ -23,6 +25,9 @@ public class JovinController {
 	public UserRepository userRepo;
 	@Autowired
 	public CustomRepo customRepo;
+	
+	@Autowired
+	public AccountRepo accRepo;
 	
 	@GetMapping("/hello")
 	public String hello()
@@ -83,15 +88,61 @@ public class JovinController {
 
 		return null;
 	}
-	
-	public UserEntity userdetails(@RequestParam int id)
+	@PostMapping("/fetchUser")
+	public UserEntity userdetails(@RequestBody String id,HttpServletResponse response)
 	{
-		List<UserEntity> ud= customRepo.findById(id);
+		System.out.println("**********Inside fetchUser*********"+id);
+		List<UserEntity> ud= customRepo.findById(Integer.parseInt(id));
+		if(ud.isEmpty()) {
+			System.out.println("got nothing");
+			
+
+
+		}
+		else
+		{
 		for (UserEntity userEntity : ud) {
 			System.out.println(userEntity.getName());
 			return(userEntity);
 		
+			}
+		}
+		return null;
 	}
 
 
+	@PostMapping("/createAccount")
+	public Accounts createAccount(@RequestBody Accounts acc, HttpServletResponse response)
+	{
+		System.out.println("******"+acc.getUserId());
+
+		
+
+		Accounts account=accRepo.save(acc);
+		System.out.println(acc);
+		return account;
+		
+	}
+	
+	@PostMapping("/fetchAccount")
+	public Accounts fetchAccount(@RequestBody String uid,HttpServletResponse response)
+	{
+		System.out.println("**********Inside fetchAccount*********"+uid);
+		List<Accounts> a= customRepo.findByUser(Integer.parseInt(uid));
+		if(a.isEmpty()) {
+			System.out.println("got nothing");
+			
+
+
+		}
+		else
+		{
+		for (Accounts account : a) {
+			System.out.println(account);
+			return account;
+		}
+		}
+		return null;
+	}
+	
 }

@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.Accounts;
 import com.example.demo.entity.UserEntity;
 import com.example.demo.repo.CustomRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,4 +34,11 @@ private EntityManager entityManager;
 		return (r);
     	
     }
+
+	@Override
+	public List<Accounts> findByUser(int uid) {
+		List<Accounts> r=entityManager.createQuery("from Accounts where u_id=:uid")
+                .setParameter("uid",uid).getResultList();
+        return(r);
+	}
 }
